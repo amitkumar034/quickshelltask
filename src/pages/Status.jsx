@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Cardheader from "./card-header";
-import Card from "./card";
+import React,{useState}from 'react'
+import Cardheader from "../components/card-header";
+import Card from "../components/card";
 
-const Groupbyuser = () => {
+const Status = () => {
   const data = 
   {
     "tickets": [
@@ -135,16 +135,17 @@ const Groupbyuser = () => {
       }
     ]
   }
-  const [users, setUser] = useState(data.users);
   const [tickets, setTickets] = useState(data.tickets)
+  
+  const statusArray = ["Backlog","Todo","In progress","Done", "Canceled"]
   return (
     <div className="userpage">
-    {users.map(user=>{
-      return <div>
-      <Cardheader listCategory={user.name} numbering="1" />
-      {tickets.map((ticket)=>{
-        if(ticket.userId===user.id){
-          return <Card cardName={ticket.id} ticketTitle={ticket.title}/>
+    {statusArray.map((sts,index)=>{
+      return <div key={index}>
+      <Cardheader listCategory={sts} numbering="1" />
+      {tickets.map((ticket,idx)=>{
+        if(ticket.status===sts){
+          return <Card cardName={ticket.id} ticketTitle={ticket.title} key={idx}/>
         }
         
       })}
@@ -154,6 +155,6 @@ const Groupbyuser = () => {
     
     </div>
   );
-};
+}
 
-export default Groupbyuser;
+export default Status

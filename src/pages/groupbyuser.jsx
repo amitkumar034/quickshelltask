@@ -1,5 +1,10 @@
+import React, { useState } from "react";
+import Cardheader from "../components/card-header";
+import Card from "../components/card";
 
-{
+const Groupbyuser = () => {
+  const data = 
+  {
     "tickets": [
       {
         "id": "CAM-1",
@@ -130,3 +135,25 @@
       }
     ]
   }
+  const [users, setUser] = useState(data.users);
+  const [tickets, setTickets] = useState(data.tickets)
+  return (
+    <div className="userpage">
+    {users.map((user,index)=>{
+      return <div key={index}>
+      <Cardheader listCategory={user.name} numbering="1" />
+      {tickets.map((ticket,idx)=>{
+        if(ticket.userId===user.id){
+          return <Card cardName={ticket.id} ticketTitle={ticket.title.slice(0,60)} key={idx}/>
+        }
+        
+      })}
+      
+    </div>
+  })}
+    
+    </div>
+  );
+};
+
+export default Groupbyuser;

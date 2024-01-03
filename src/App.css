@@ -25,6 +25,8 @@ header{
 
 
 .activeOnHover{
+    position: absolute;
+    top: 40px;
     margin-top: 5px;
     padding: 5px;
     width: 200px;
@@ -33,10 +35,6 @@ header{
     border-radius: 5px;
     font-size: small;
     background-color: rgba(244, 245, 248, 1);
-    display: none;
-}
-.selectbtn:hover + .activeOnHover{
-    display: block;
 }
 .row1, .row2{
     display: flex;
@@ -111,3 +109,12 @@ img{
 }
 
   
+/* Responsive */
+
+@media  (max-width: 480px){
+    .userpage{
+        display: grid;
+        column-gap: 20px;
+        height: max-content;
+    }
+}
